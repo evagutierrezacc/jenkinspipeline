@@ -14,8 +14,8 @@ pipeline{
     stages{
         stage("Verificación"){
             steps{
-                sh "java -version"
-                sh "mvn -version"
+                bat "java -version"
+                bat "mvn -version"
                 echo "Operación a ejecutar: ${params.OPERATION}"
             }
         }
@@ -23,7 +23,7 @@ pipeline{
         stage("Descarga del código y build"){
             steps{
                 git "REPO-URL"
-                sh "mvn clean ${params.OPERATION}"
+                bat "mvn clean ${params.OPERATION}"
             }
         }
     }
